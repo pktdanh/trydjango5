@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>5mintub</title>
+        <style>
+            .container {
+                max-width: 400px;
+                margin: 200px auto 0;
+            }
+            .group {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>This is home page</h1>
+            <div class="group">
+                <span>1. Get all videos. </span>
+                <a href="{%url 'videos:get_list_videos'%}">Click here</a>
+            </div>
+            <div class="group">
+                <span>2. Get all categories. </span>
+                <a href="{%url 'videos:get_all_categories'%}">Click here</a>
+            </div>
+            <div class="group">
+                <span>3. Get list videos by title. </span>
+                <a href="{%url 'videos:get_list_videos'%}?title=ronaldo"
+                    >Click here</a
+                >
+            </div>
+            <div class="group">
+                <span>4. Get list videos by category_id. </span>
+                <a href="{%url 'videos:get_list_videos'%}?category=1"
+                    >Click here</a
+                >
+            </div>
+            <div class="group">
+                <span>5. Get list videos by title and category_id. </span>
+                <a
+                    href="{%url 'videos:get_list_videos'%}?title=ronaldo&category=2"
+                    >Click here</a
+                >
+            </div>
+        </div>
+    </body>
+</html>
