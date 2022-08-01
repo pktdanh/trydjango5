@@ -1,3 +1,4 @@
+from model_bakery import baker
 from model_bakery.recipe import Recipe, foreign_key
 from videos.models import Category, Video
 
