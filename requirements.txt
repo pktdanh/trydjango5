@@ -62,3 +62,4 @@ urllib3==1.26.10
 walrus==0.9.2
 Whoosh==2.7.4
 wrapt==1.14.1
+zipp==3.6.0
