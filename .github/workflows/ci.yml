@@ -10,20 +10,24 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: qzo@-64)%3zt%-$f6_(e8x@b2110u3rq$_3imflk)why-b)=iy
+      DATABASE_NAME: trydjango5
+      DATABASE_USER: danh_5mintub_user
+      DATABASE_PASS: danh123123
     strategy:
       max-parallel: 4
       matrix:
         python-version: [3.6]
-        
     services:
       postgres:
         image: postgres
         ports:
           - 5432:5432
         env:
-          POSTGRES_DB: trydjango5
-          POSTGRES_USER: danh_5mintub_user
-          POSTGRES_PASSWORD: danh123123
+          POSTGRES_DB: ${{ env.DATABASE_NAME }}
+          POSTGRES_USER: ${{ env.DATABASE_USER }}
+          POSTGRES_PASSWORD: ${{ env.DATABASE_PASS }}
 
 
     steps:
@@ -37,5 +41,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      env:
+        DJANGO_SECRET_KEY: ${{ env.SECRET_KEY }}
+        POSTGRES_DB: ${{ env.DATABASE_NAME }}
+        POSTGRES_USER: ${{ env.DATABASE_USER }}
+        POSTGRES_PASSWORD: ${{ env.DATABASE_PASS }}
       run: |
         pytest
