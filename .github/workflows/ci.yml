@@ -41,10 +41,5 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
-      env:
-        DJANGO_SECRET_KEY: ${{ env.SECRET_KEY }}
-        POSTGRES_DB: ${{ env.DATABASE_NAME }}
-        POSTGRES_USER: ${{ env.DATABASE_USER }}
-        POSTGRES_PASSWORD: ${{ env.DATABASE_PASS }}
       run: |
         pytest
