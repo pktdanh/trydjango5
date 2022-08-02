@@ -19,7 +19,7 @@ from pathlib import Path
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
-ENV_PATH = env.str("ENV_PATH", default=".env")
+ENV_PATH = env.str("ENV_PATH", default="env/local.env")
 env.read_env(env_file=os.path.join(BASE_DIR, ENV_PATH))
 
 
