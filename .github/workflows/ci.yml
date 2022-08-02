@@ -23,7 +23,7 @@ jobs:
         env:
           POSTGRES_DB: trydjango5
           POSTGRES_USER: danh_5mintub_user
-          POSTGRES_PASSWORD: danh1231234
+          POSTGRES_PASSWORD: danh123123
 
 
     steps:
