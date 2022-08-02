@@ -11,16 +11,23 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ 
 from datetime import timedelta
+from pathlib import Path
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+ENV_PATH = env.str("ENV_PATH", default=".env")
+env.read_env(env_file=os.path.join(BASE_DIR, ENV_PATH))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'qzo@-64)%3zt%-$f6_(e8x@b2110u3rq$_3imflk)why-b)=iy'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,9 +89,9 @@ WSGI_APPLICATION = 'trydjango5.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'trydjango5', 
-        'USER': 'danh_5mintub_user', 
-        'PASSWORD': 'danh123123',
+        'NAME': env('DATABASE_NAME'), 
+        'USER': env('DATABASE_USER'), 
+        'PASSWORD': env('DATABASE_PASS'),
         'HOST': '127.0.0.1', 
         'PORT': '5432',
     }
